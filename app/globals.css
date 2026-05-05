@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
+/*
+  OperTask brand tokens (FR31).
+  Semantic Tailwind utilities: bg-ground, bg-surface, bg-raised,
+  text-ink, text-ink-2, text-ink-3, text-accent — plus font-display / font-sans, section spacing.
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0f1419;
+  --bg-2: #141a21;
+  --bg-3: #1f2630;
+  --ink: #e6e5dc;
+  --ink-2: #a8ada3;
+  --ink-3: #6b7785;
+  --accent: #88c0a8;
+  --warn: #e0a37a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Surfaces — never use pure black on brand backgrounds */
+  --color-ground: var(--bg);
+  --color-surface: var(--bg-2);
+  --color-raised: var(--bg-3);
+
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-warn: var(--warn);
+
+  --animate-blink: blink 1.1s step-end infinite;
+
+  --font-display: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-sans: var(--font-work-sans), ui-sans-serif, system-ui, sans-serif;
+
+  /* Section rhythm (PRD: 80–120px between sections) */
+  --spacing-section: 5rem;
+  --spacing-section-lg: 7.5rem;
+
+  /* Centered content column */
+  --max-width-content: 1180px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    background-color: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
 }

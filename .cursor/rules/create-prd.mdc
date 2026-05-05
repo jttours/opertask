@@ -1,0 +1,96 @@
+---
+description: Generate high-quality Product Requirements Documents (PRDs) using structured questions and a standardized format for junior developers.
+globs: 
+alwaysApply: false
+---
+# create-prd.mdc
+
+To guide an AI assistant in creating a detailed Product Requirements Document (PRD), follow these instructions:
+
+## Overall Flow
+
+1. **Clarify Prompt:** If the user provides only a rough idea or a vague feature request, ask follow-up clarifying questions first.
+2. **Ask Clarifying Questions:** Use the format outlined below. Wait for the user's response before generating the PRD.
+3. **Generate PRD:** Based on the initial prompt and the user's answers to the clarifying questions, generate a PRD using the structure outlined below.
+4. **Save PRD:** Save the generated document as `prd-[feature-name].md` inside the `/tasks` directory.
+
+---
+
+## Clarifying Questions Format
+
+When asking clarifying questions, the AI *must* format them as a numbered list. This list should support nested sub-questions using dot notation (e.g., 1, 2, 2.1, 2.2, 3).
+
+Example format:
+
+1. Top-level question 1?
+2. Top-level question 2?  
+   2.1. Sub-question related to question 2?  
+   2.2. Another sub-question related to question 2?  
+3. Top-level question 3?
+
+There should only be one atomic question per list item.
+
+The AI should adapt its *actual questions* based on the user's initial prompt, aiming to cover relevant areas like:
+
+- **Problem/Goal:** What problem does this feature solve? What is the primary goal?
+- **Target User:** Who is this feature for?
+- **Core Functionality:** What are the essential actions the user must be able to perform?
+- **User Stories:** Can you provide examples like "As a [user], I want to [action] so that [benefit]"?
+- **Acceptance Criteria:** How do we define success for this feature?
+- **Scope/Boundaries:** What should this feature explicitly *not* do?
+- **Data:** What information needs to be displayed or managed?
+- **Design/UI:** Are there mockups or specific UI preferences?
+- **Edge Cases:** What potential errors or unusual situations should be considered?
+
+---
+
+## PRD Structure
+
+Assume the primary reader of the PRD is a **junior developer**. Therefore, require precision, clarity, and explicit behavior.
+
+The PRD should follow this structure:
+
+### 1. Feature Overview
+A one-paragraph summary of what this feature is and why it matters.
+
+### 2. Problem Statement
+What user or business problem does this feature solve?
+
+### 3. Goals
+List of what this feature aims to accomplish.
+
+### 4. Non-Goals
+What this feature explicitly will *not* handle.
+
+### 5. User Stories
+List 2–5 user stories in the format:
+- As a [user type], I want to [do something] so that [reason/benefit].
+
+### 6. Functional Requirements
+Numbered list of explicit requirements that must be implemented. Use the format:
+- FR1: [First requirement]
+- FR2: [Second requirement]
+
+### 7. Data Requirements
+What data must be displayed, stored, or changed?
+
+### 8. UI/UX
+Any UI mockups or textual description of the expected interface.
+
+### 9. Edge Cases
+What weird or unexpected scenarios need to be handled gracefully?
+
+### 10. Success Criteria
+How do we know the feature is working correctly? What tests or behaviors should pass?
+
+---
+
+## Final instructions
+
+3. **Generate PRD:** Based on the initial prompt and the user's answers to the clarifying questions, generate a PRD using the structure outlined above.
+4. **Save PRD:** Save the generated document as `prd-[feature-name].md` inside the `/tasks` directory.
+---
+description:
+globs:
+alwaysApply: false
+---

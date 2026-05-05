@@ -1,0 +1,85 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# generate-tasks.mdc
+
+## Goal
+
+To guide an AI assistant in creating a detailed, step-by-step task list in Markdown format based on an existing Product Requirements Document (PRD). The task list should guide a developer through implementation using Test-Driven Development (TDD) principles.
+
+---
+
+## Process Flow
+
+1. **Receive PRD Input:** The user provides or references a valid PRD (e.g., `/tasks/prd-itinerary-offer-presentation.md`).
+2. **Analyze PRD:** The AI reads and analyzes the functional requirements, user stories, and other sections of the specified PRD.
+3. **Phase 1 – Generate Parent Tasks:**
+
+   * Identify and define the high-level tasks required to implement the feature.
+   * Use judgment to create \~5 top-level tasks.
+   * Present the parent tasks to the user using the task format shown below.
+   * After listing, say:
+     *"I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed."*
+4. **Wait for Confirmation:** Do not proceed until the user responds with **"Go"**.
+5. **Phase 2 – Generate Sub-Tasks (TDD approach):**
+
+   * For each parent task, break it down into smaller sub-tasks.
+   * For each piece of functionality, include:
+
+     * A sub-task to **write a unit test**
+     * A sub-task to **implement the code**
+     * A sub-task to **verify the implementation**
+   * Only include TDD-style sub-tasks where applicable (e.g., omit for documentation or styling tasks).
+6. **Identify Relevant Files:**
+
+   * List all source files and test files that are expected to be created or modified.
+   * Present these under a `Relevant Files` section.
+7. **Generate Final Output:**
+
+   * Combine the tasks, sub-tasks, relevant files, and any developer notes into a single document.
+8. **Save Task List:**
+
+   * Save the file to the `/tasks/` directory using this naming convention:
+
+     ```
+     tasks-[prd-file-name].md
+     ```
+
+     Example: If the PRD is `prd-user-profile-editing.md`, the output is `tasks-prd-user-profile-editing.md`.
+
+---
+
+## Output Format
+
+The generated task list **must** follow this Markdown structure:
+
+```md
+## Tasks
+
+- [ ] 1.0 [Parent Task Title]
+  - [ ] 1.1 **Test:** Write unit test for [sub-task description 1.1]
+  - [ ] 1.1 **Implement:** [sub-task description 1.1]
+  - [ ] 1.1 **Verify:** Run unit test for [sub-task description 1.1]
+  - [ ] 1.2 **Test:** Write unit test for [sub-task description 1.2]
+  - [ ] 1.2 **Implement:** [sub-task description 1.2]
+  - [ ] 1.2 **Verify:** Run unit test for [sub-task description 1.2]
+
+- [ ] 2.0 [Parent Task Title]
+  - [ ] 2.1 [Sub-task description 2.1]
+
+- [ ] 3.0 [Parent Task Title] (May not require sub-tasks if purely structural or configuration)
+
+## Relevant Files
+
+- `components/ItineraryPreview.tsx`
+- `utils/pdfGenerator.ts`
+- `tests/pdfGenerator.test.ts`
+...
+```
+---
+description:
+globs:
+alwaysApply: false
+---
