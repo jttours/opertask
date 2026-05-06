@@ -53,12 +53,17 @@ export default function BookingPage() {
               an Automation Blueprint is the right fit. No commitment, no pitch —
               just a direct conversation.
             </p>
-            <CalendlyEmbed
-              url="https://calendly.com/opertask/fit-call"
-              minHeight={650}
-              containerId="calendly-fit-call"
-              className="mt-6 min-h-[650px] w-full"
-            />
+            <div className="mt-8 flex flex-col gap-4">
+              <p className="font-sans text-ink-2">
+                Send us an email and we&apos;ll schedule a time that works for you.
+              </p>
+              <a
+                href="mailto:omar@jttours.com?subject=Workflow Fit Call Request"
+                className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 font-sans font-medium text-ground transition-opacity hover:opacity-80"
+              >
+                Email us to book →
+              </a>
+            </div>
           </div>
         </div>
 
