@@ -1,15 +1,5 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
-const basePath = isProd ? "/opertask" : "";
-
-const nextConfig: NextConfig = {
-  output: "export",
-  trailingSlash: true,
-  images: { unoptimized: true },
-  basePath,
-  assetPrefix: basePath || undefined,
-  env: { NEXT_PUBLIC_BASE_PATH: basePath },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
